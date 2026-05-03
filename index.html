@@ -6,6 +6,9 @@
   <meta name="description" content="LY Euro Mounts — Professional European skull mounts. Serving Upstate South Carolina and Upper & Central Georgia. Call or text (478) 316-0638.">
   <title>LY Euro Mounts | Upstate SC</title>
 
+  <link rel="icon" href="favicon.ico" sizes="32x32">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
@@ -255,7 +258,7 @@
     @keyframes pulse { 0%,100%{opacity:.3} 50%{opacity:1} }
     @keyframes fadeIn { from{opacity:0} to{opacity:1} }
 
-    /* ── WORK / GALLERY ── */
+    /* ── WORK TEASER ── */
     #work {
       background: var(--dark-2);
       padding: 5rem 1.25rem 4rem;
@@ -265,55 +268,42 @@
       margin: 0 auto 2.5rem;
       text-align: center;
     }
-    .gallery-hint {
-      font-size: .7rem;
-      font-weight: 400;
-      letter-spacing: .12em;
-      color: rgba(184,144,80,.55);
-      margin-top: .75rem;
-      font-style: italic;
-    }
-    .gallery {
+    .gallery-teaser {
       max-width: 1200px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr 1fr;
       gap: 8px;
     }
-    .gallery-item {
-      overflow: hidden;
-      position: relative;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 0;
+    .teaser-item {
       display: block;
+      overflow: hidden;
       aspect-ratio: 3/4;
+      position: relative;
     }
-    .gallery-item:first-child { aspect-ratio: 4/3; }
-    .gallery-item img {
+    .teaser-item.teaser-main {
+      grid-column: span 2;
+      aspect-ratio: 16/9;
+    }
+    .teaser-item img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
       transition: transform .65s ease;
-      pointer-events: none;
     }
-    .gallery-item::after {
+    .teaser-item::after {
       content: '';
       position: absolute;
       inset: 0;
       background: rgba(20,16,10,0);
       transition: background .3s;
     }
-    .gallery-item:hover::after,
-    .gallery-item:focus-visible::after {
-      background: rgba(20,16,10,.18);
-    }
-    .gallery-item:hover img { transform: scale(1.05); }
-    .gallery-item:focus-visible {
-      outline: 2px solid var(--gold);
-      outline-offset: -2px;
+    .teaser-item:hover::after { background: rgba(20,16,10,.18); }
+    .teaser-item:hover img { transform: scale(1.05); }
+    .teaser-cta {
+      text-align: center;
+      margin-top: 2rem;
     }
 
     /* ── WHY EURO MOUNT ── */
@@ -611,85 +601,12 @@
       color: rgba(234,224,200,.28);
     }
 
-    /* ── LIGHTBOX ── */
-    .lightbox {
-      display: none;
-      position: fixed;
-      inset: 0;
-      background: rgba(13, 9, 5, .97);
-      z-index: 500;
-      align-items: center;
-      justify-content: center;
-    }
-    .lightbox.open { display: flex; }
-    .lb-img-wrap {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 4.5rem 4rem;
-    }
-    .lb-img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      display: block;
-      user-select: none;
-      -webkit-user-drag: none;
-    }
-    .lb-btn {
-      position: absolute;
-      background: none;
-      border: none;
-      color: rgba(234,224,200,.7);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-width: 50px;
-      min-height: 50px;
-      transition: color .2s;
-      padding: .5rem;
-    }
-    .lb-btn:hover, .lb-btn:focus-visible {
-      color: var(--gold);
-      outline: none;
-    }
-    .lb-close { top: 1rem; right: 1rem; }
-    .lb-prev {
-      left: .5rem;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-    .lb-next {
-      right: .5rem;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-    .lb-counter {
-      position: absolute;
-      bottom: 1.25rem;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: .62rem;
-      letter-spacing: .2em;
-      color: rgba(234,224,200,.35);
-      pointer-events: none;
-    }
 
     /* ── RESPONSIVE: Tablet 600px+ ── */
     @media (min-width: 600px) {
       nav { padding: 1.1rem 2rem; }
 
-      .gallery {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-      }
-      .gallery-item { aspect-ratio: 3/4; }
-      .gallery-item:first-child {
-        grid-column: span 2;
-        aspect-ratio: 16/9;
-      }
+      .gallery-teaser { gap: 10px; }
 
       .services-grid {
         flex-direction: row;
@@ -711,10 +628,6 @@
 
       .euro-img { height: 440px; }
 
-      .lb-prev { left: 1.25rem; }
-      .lb-next { right: 1.25rem; }
-      .lb-img-wrap { padding: 5rem 7rem; }
-      .lb-btn { min-width: 56px; min-height: 56px; }
     }
 
     /* ── RESPONSIVE: Desktop 900px+ ── */
@@ -725,14 +638,14 @@
 
       #work { padding: 6rem 2rem 5rem; }
 
-      .gallery {
+      .gallery-teaser {
         grid-template-columns: repeat(3, 1fr);
         gap: 10px;
       }
-      .gallery-item { aspect-ratio: 3/4; }
-      .gallery-item:first-child {
-        grid-column: span 2;
-        aspect-ratio: 16/9;
+      .teaser-item { aspect-ratio: 3/4; }
+      .teaser-item.teaser-main {
+        grid-column: span 1;
+        aspect-ratio: 3/4;
       }
 
       #euro-mount { padding: 6.5rem 2rem; }
@@ -810,40 +723,27 @@
     </div>
   </section>
 
-  <!-- ── WORK / GALLERY ── -->
+  <!-- ── WORK TEASER ── -->
   <section id="work" aria-labelledby="work-title">
     <div class="section-header">
       <span class="section-label">The Work</span>
       <h2 class="section-title" id="work-title">Built to Display.</h2>
       <div class="rule rule--center" aria-hidden="true"></div>
       <p class="body-text">Professional-grade European mounts, prepared with care from start to finish. Each one stands on its own.</p>
-      <p class="gallery-hint">Tap any photo to view full size</p>
     </div>
-    <div class="gallery" role="list" aria-label="Work gallery">
-      <figure class="gallery-item" role="listitem" tabindex="0" aria-label="View: Five whitetail euro mounts on wood wall">
-        <img src="images/wall-of-5.webp" alt="Five whitetail euro mounts displayed on a dark wood plank wall" loading="lazy">
-      </figure>
-      <figure class="gallery-item" role="listitem" tabindex="0" aria-label="View: Euro mount on fence post">
-        <img src="images/fence-post.webp" alt="Euro mount displayed on a rustic wooden fence post under a dramatic sky" loading="lazy">
-      </figure>
-      <figure class="gallery-item" role="listitem" tabindex="0" aria-label="View: Euro mount by a tree">
-        <img src="images/by-tree.webp" alt="Finished euro mount resting against the base of a tree surrounded by fall leaves" loading="lazy">
-      </figure>
-      <figure class="gallery-item" role="listitem" tabindex="0" aria-label="View: Mule deer euro mount">
-        <img src="images/mule-deer.webp" alt="Mule deer euro mount on a natural wood plaque" loading="lazy">
-      </figure>
-      <figure class="gallery-item" role="listitem" tabindex="0" aria-label="View: Hunter with whitetail in cornfield">
-        <img src="images/customer-cornfield.webp" alt="Hunter posing with a whitetail buck in a cornfield at night" loading="lazy">
-      </figure>
-      <figure class="gallery-item" role="listitem" tabindex="0" aria-label="View: Before and after — deer to euro mount">
-        <img src="images/customer-before-after.webp" alt="Hunter with harvested whitetail deer and inset photo of the finished euro mount" loading="lazy">
-      </figure>
-      <figure class="gallery-item" role="listitem" tabindex="0" aria-label="View: Hunter with whitetail in the woods">
-        <img src="images/customer-woods.webp" alt="Hunter kneeling with a whitetail buck in the woods" loading="lazy">
-      </figure>
-      <figure class="gallery-item" role="listitem" tabindex="0" aria-label="View: Hunter with whitetail at night">
-        <img src="images/customer-lady.webp" alt="Hunter in orange safety vest with a whitetail deer at night" loading="lazy">
-      </figure>
+    <div class="gallery-teaser">
+      <a href="gallery.html" class="teaser-item teaser-main">
+        <img src="images/wall-of-5.webp" alt="Five whitetail euro mounts on a dark wood wall" loading="lazy">
+      </a>
+      <a href="gallery.html" class="teaser-item">
+        <img src="images/fence-post.webp" alt="Euro mount on a rustic fence post" loading="lazy">
+      </a>
+      <a href="gallery.html" class="teaser-item">
+        <img src="images/by-tree.webp" alt="Euro mount resting against a tree" loading="lazy">
+      </a>
+    </div>
+    <div class="teaser-cta">
+      <a href="gallery.html" class="btn">View All Work</a>
     </div>
   </section>
 
@@ -1010,29 +910,6 @@
     <p>&copy; 2025 LY Euro Mounts &nbsp;·&nbsp; Upstate SC &nbsp;·&nbsp; All Rights Reserved</p>
   </footer>
 
-  <!-- ── LIGHTBOX ── -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Gallery image viewer">
-    <button class="lb-btn lb-close" id="lbClose" aria-label="Close gallery">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round">
-        <line x1="18" y1="6" x2="6" y2="18"/>
-        <line x1="6" y1="6" x2="18" y2="18"/>
-      </svg>
-    </button>
-    <button class="lb-btn lb-prev" id="lbPrev" aria-label="Previous image">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="15 18 9 12 15 6"/>
-      </svg>
-    </button>
-    <button class="lb-btn lb-next" id="lbNext" aria-label="Next image">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="9 18 15 12 9 6"/>
-      </svg>
-    </button>
-    <div class="lb-img-wrap">
-      <img id="lbImg" src="" alt="" class="lb-img">
-    </div>
-    <p class="lb-counter" id="lbCounter" aria-live="polite" aria-atomic="true"></p>
-  </div>
 
   <script>
     // ── Nav scroll ──
@@ -1061,94 +938,6 @@
       if (e.key === 'Escape' && mobileMenu.classList.contains('open')) closeMenu();
     });
 
-    // ── Lightbox ──
-    const GALLERY = [
-      { src: 'images/wall-of-5.webp',            alt: 'Five whitetail euro mounts displayed on a dark wood plank wall' },
-      { src: 'images/fence-post.webp',            alt: 'Euro mount displayed on a rustic wooden fence post under a dramatic sky' },
-      { src: 'images/by-tree.webp',               alt: 'Finished euro mount resting against a tree surrounded by fall leaves' },
-      { src: 'images/mule-deer.webp',             alt: 'Mule deer euro mount on a natural wood plaque' },
-      { src: 'images/customer-cornfield.webp',    alt: 'Hunter posing with a whitetail buck in a cornfield at night' },
-      { src: 'images/customer-before-after.webp', alt: 'Hunter with harvested deer and inset of the finished euro mount' },
-      { src: 'images/customer-woods.webp',        alt: 'Hunter kneeling with a whitetail buck in the woods' },
-      { src: 'images/customer-lady.webp',         alt: 'Hunter in orange safety vest with a whitetail deer at night' },
-    ];
-
-    let lbIndex = 0;
-    let lbOpen  = false;
-
-    const lightbox  = document.getElementById('lightbox');
-    const lbImg     = document.getElementById('lbImg');
-    const lbCounter = document.getElementById('lbCounter');
-
-    function updateLightbox() {
-      const { src, alt } = GALLERY[lbIndex];
-      lbImg.src = src;
-      lbImg.alt = alt;
-      lbCounter.textContent = (lbIndex + 1) + ' / ' + GALLERY.length;
-    }
-
-    function openLightbox(i) {
-      lbIndex = i;
-      lbOpen  = true;
-      updateLightbox();
-      lightbox.classList.add('open');
-      document.body.style.overflow = 'hidden';
-      document.getElementById('lbClose').focus();
-    }
-
-    function closeLightbox() {
-      lbOpen = false;
-      lightbox.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    function lbPrev() {
-      lbIndex = (lbIndex - 1 + GALLERY.length) % GALLERY.length;
-      updateLightbox();
-    }
-
-    function lbNext() {
-      lbIndex = (lbIndex + 1) % GALLERY.length;
-      updateLightbox();
-    }
-
-    // Gallery click / keyboard
-    document.querySelectorAll('.gallery-item').forEach((item, i) => {
-      item.addEventListener('click', () => openLightbox(i));
-      item.addEventListener('keydown', e => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          openLightbox(i);
-        }
-      });
-    });
-
-    document.getElementById('lbClose').addEventListener('click', closeLightbox);
-    document.getElementById('lbPrev').addEventListener('click', e => { e.stopPropagation(); lbPrev(); });
-    document.getElementById('lbNext').addEventListener('click', e => { e.stopPropagation(); lbNext(); });
-
-    // Click backdrop to close
-    lightbox.addEventListener('click', e => {
-      if (e.target === lightbox || e.target === lbImg.parentElement) closeLightbox();
-    });
-
-    // Keyboard nav in lightbox
-    document.addEventListener('keydown', e => {
-      if (!lbOpen) return;
-      if (e.key === 'Escape')      closeLightbox();
-      if (e.key === 'ArrowLeft')   lbPrev();
-      if (e.key === 'ArrowRight')  lbNext();
-    });
-
-    // Touch swipe
-    let touchStartX = 0;
-    lightbox.addEventListener('touchstart', e => {
-      touchStartX = e.touches[0].clientX;
-    }, { passive: true });
-    lightbox.addEventListener('touchend', e => {
-      const diff = touchStartX - e.changedTouches[0].clientX;
-      if (Math.abs(diff) > 50) diff > 0 ? lbNext() : lbPrev();
-    }, { passive: true });
   </script>
 </body>
 </html>
