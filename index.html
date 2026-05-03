@@ -50,7 +50,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap"></noscript>
 
   <style>
     /* ── Reset ── */
@@ -727,7 +729,7 @@
   <!-- ── NAV ── -->
   <nav id="navbar">
     <a href="#hero" class="nav-logo" aria-label="LY Euro Mounts — Home">
-      <img src="images/logo-1.webp" alt="LY Euro Mounts">
+      <img src="images/logo-1.webp" alt="LY Euro Mounts" width="160" height="160">
     </a>
     <ul class="nav-links" role="list">
       <li><a href="#work">Work</a></li>
@@ -750,7 +752,7 @@
   <!-- ── HERO ── -->
   <section id="hero" aria-label="LY Euro Mounts">
     <div class="hero-content">
-      <img src="images/logo-2.webp" alt="LY Euro Mounts — Established 2023" class="hero-logo">
+      <img src="images/logo-2.webp" alt="LY Euro Mounts — Established 2023" class="hero-logo" width="880" height="880" fetchpriority="high">
       <div class="hero-rule" aria-hidden="true"></div>
       <p class="hero-tagline">Every mount tells a story.</p>
       <p class="hero-location">Upstate SC &nbsp;·&nbsp; Upper &amp; Central GA</p>
@@ -945,7 +947,7 @@
 
   <!-- ── FOOTER ── -->
   <footer>
-    <img src="images/logo-3.webp" alt="LY Euro Mounts">
+    <img src="images/logo-3.webp" alt="LY Euro Mounts" width="180" height="180">
     <p>&copy; 2025 LY Euro Mounts &nbsp;·&nbsp; Upstate SC &nbsp;·&nbsp; All Rights Reserved</p>
   </footer>
 
